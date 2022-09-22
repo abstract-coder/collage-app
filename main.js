@@ -8,7 +8,7 @@ function my_start()
     document.getElementById("textbox").innerHTML= "";
 }
 
-recognition.onResults= function (event){
+recognition.onresult= function (event){
     console.log(event);
     var transcript = event.results[0][0].transcript;
     document.getElementById("textbox").innerHTML= transcript;
@@ -39,7 +39,7 @@ function speak(){
     setTimeout(function(){
         image_id= "selfie1";
         take_snapshot();
-        speak_data= "Taking your selfie in 10 seconds";
+        speak_data= "Taking your next selfie in 10 seconds";
         utterThis= new SpeechSynthesisUtterance(speak_data);
         synth.speak(utterThis);
 }, 5000);
@@ -47,7 +47,7 @@ function speak(){
     setTimeout(function(){
         image_id= "selfie2";
         take_snapshot();
-        speak_data= "Taking your selfie in 15 seconds"
+        speak_data= "Taking your next selfie in 15 seconds"
         utterThis= new SpeechSynthesisUtterance(speak_data);
         synth.speak(utterThis);
     }, 10000)
@@ -55,9 +55,6 @@ function speak(){
     setTimeout(function(){
         image_id="selfie3";
         take_snapshot();
-        speak_data= "Taking your selfie in 20 seconds";
-        utterThis= new SpeechSynthesisUtterance(speak_data);
-        synth.speak(utterThis);
     }, 15000);
 
 }
@@ -66,13 +63,13 @@ function take_snapshot(){
     console.log(image_id);
     Webcam.snap(function(data_uri){
         if (image_id == "selfie1"){
-            document.getElementById("results1").innerHTML= "<img src='"+data_uri+"'>"
+            document.getElementById("result1").innerHTML= "<img src='"+data_uri+"'>"
         }
         if (image_id == "selfie2"){
-            document.getElementById("results2").innerHTML= "<img src='"+data_uri+"'>"
+            document.getElementById("result2").innerHTML= "<img src='"+data_uri+"'>"
         }
         if (image_id == "selfie3"){
-            document.getElementById("results3").innerHTML= "<img src='"+data_uri+"'>"
+            document.getElementById("result3").innerHTML= "<img src='"+data_uri+"'>"
         }
     });
 }
